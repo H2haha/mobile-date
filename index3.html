@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+
+
+    <title>Mobiscroll</title>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <!-- <script src="js/mobiscroll.appframework.js"></script> -->
+
+    <script src="js/mobiscroll.core.js"></script>
+
+    <script src="js/mobiscroll.widget.js"></script>
+
+    <script src="js/mobiscroll.scroller.js"></script>
+
+    
+
+
+
+    <script src="js/mobiscroll.util.datetime.js"></script>
+
+    <script src="js/mobiscroll.datetimebase.js"></script>
+
+
+
+    <script src="js/mobiscroll.widget.ios.js"></script>
+
+
+
+    <script src="js/mobiscroll.i18n.zh.js"></script>
+
+
+
+    <link href="css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/mobiscroll.widget.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/mobiscroll.widget.ios.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+
+
+
+
+    <style type="text/css">
+
+
+     
+
+
+
+
+    </style>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+			var nowData=new Date();
+           nowData = new Date(nowData.setHours(nowData.getHours() + 2));
+            // nowData.setMinutes(0);
+	        var opt= { 
+
+	        	theme:'ios', //设置显示主题 
+
+                mode:'scroller', //设置日期选择方式，这里用滚动
+
+                display:'bottom', //设置控件出现方式及样式
+
+                preset : 'datetime', //日期:年 月 日 时 分
+
+                minDate: nowData, 
+
+				// maxDate:new Date(nowData.getFullYear(),nowData.getMonth(),nowData.getDate()+7,22,00),
+                dateFormat: 'mm-dd', // 日期格式
+                /*dateStrMouth:"月",
+                dateStrDay:"日",*/
+                dateOrder: 'mmdd', //面板中日期排列格式
+
+                stepMinute: 1, //设置分钟步长
+
+                yearText:'年', 
+
+                monthText:'月',
+
+                dayText:'日',
+
+                hourText:'时',
+
+                minuteText:'分',
+
+                lang:'zh' //设置控件语言};
+
+            };
+             var opt2= { 
+
+                theme:'ios', //设置显示主题 
+
+                mode:'scroller', //设置日期选择方式，这里用滚动
+
+                display:'bottom', //设置控件出现方式及样式
+
+                preset : 'date', //日期:年 月 日 时 分
+
+                minDate: nowData, 
+
+                // maxDate:new Date(nowData.getFullYear(),nowData.getMonth(),nowData.getDate()+7,22,00),
+                dateFormat: 'mm-dd', // 日期格式
+
+                dateOrder: 'mmdd', //面板中日期排列格式
+
+                stepMinute: 1, //设置分钟步长
+
+                yearText:'年', 
+
+                monthText:'月',
+
+                dayText:'日',
+
+                hourText:'时',
+
+                minuteText:'分',
+
+                lang:'zh' //设置控件语言};
+
+            };
+            
+
+            $('#test').mobiscroll(opt);
+            var date = new Date();
+            $('#test').val(date.getMonth()+1+"月"+(date.getDate()+1)+"日"+6+"时");
+             $('#test2').mobiscroll(opt2);
+            $('#test2').val(date.getMonth()+1+"月"+(date.getDate()+3)+"日");
+         
+        });
+
+    </script>
+        <script>
+    (function(doc, win) {
+        var _root = doc.documentElement,
+            resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            resizeCallback = function() {
+                var clientWidth = _root.clientWidth,
+                    fontSize = 10 * 10;
+                if (!clientWidth) return;
+                if (clientWidth < 1080) {
+                    fontSize = 100 * (clientWidth / 750);
+                } else {
+                    fontSize = 100 * (1080 / 750);
+                }
+                _root.style.fontSize = fontSize + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvent, resizeCallback, false);
+        doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+    })(document, window);
+    </script>
+</head>
+
+
+
+<body>
+ 
+    <input type="text" name="test" id="test" />
+     <input type="text" name="test" id="test2" />
+   
+</body>
+
+</html>
+
